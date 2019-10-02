@@ -99,13 +99,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#export JAVA_HOME='/install/jdk1.8.0_102'
+GIT_PROMPT_ONLY_IN_REPO=1
 
-if [ -d $JAVA_HOME ] ; then
-	PATH="$PATH:$JAVA_HOME"
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
-#. /usr/local/share/autojump/autojump.bash
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # Set config variables first
 #GIT_PROMPT_ONLY_IN_REPO=1
@@ -130,3 +131,4 @@ hextstodate() {
 	date -d @`echo $((0x$1))`;
 }
 
+source ~/Sandboxes/git-completion.bash
